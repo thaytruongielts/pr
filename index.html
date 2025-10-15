@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Guide to IELTS Process Essays</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8;
+        }
+        .tab-active {
+            border-bottom-color: #c29a6b;
+            color: #c29a6b;
+            font-weight: 600;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+        .accordion-item.open .accordion-content {
+            max-height: 500px;
+        }
+        .accordion-item.open .accordion-icon {
+            transform: rotate(45deg);
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+    <!-- Chosen Palette: Calm Neutrals -->
+    <!-- Application Structure Plan: The application is structured as a tabbed interface with four main sections: "Introduction," "Overview," "Body Paragraphs," and "Language Checklist." This design was chosen to mirror the logical flow of writing an essay, breaking down the complex task into manageable, sequential steps. This task-oriented navigation allows users to focus on one component at a time, preventing information overload and creating a more guided, intuitive learning experience compared to a linear document. -->
+    <!-- Visualization & Content Choices: The source report is instructional text, not data. Goal: Organize and Inform. Presentation Method: The primary structure uses interactive tabs to separate essay components. The "Essential Language Checklist," originally a static table, has been transformed into an interactive accordion. Interaction: Users click tabs to switch between sections and click accordion headers to reveal/hide vocabulary lists. Justification: This approach turns a passive guide into an active, exploratory tool. The accordion makes the dense language list less intimidating and easier to navigate. No charts are necessary for this content. Library/Method: Vanilla JS for all interactions. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="text-slate-800">
+
+    <div class="container mx-auto px-4 py-8 md:py-12 max-w-4xl">
+
+        <header class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900">Interactive Guide to IELTS Process Essays</h1>
+            <p class="mt-2 text-lg text-slate-600">Master the structure for Task 1 with this step-by-step guide.</p>
+        </header>
+
+        <nav class="flex justify-center border-b border-slate-200 mb-8">
+            <button data-target="introduction" class="tab-button py-3 px-4 md:px-6 text-sm md:text-base border-b-2 border-transparent hover:text-[#c29a6b] transition-colors duration-300 tab-active">1. Introduction</button>
+            <button data-target="overview" class="tab-button py-3 px-4 md:px-6 text-sm md:text-base border-b-2 border-transparent hover:text-[#c29a6b] transition-colors duration-300">2. Overview</button>
+            <button data-target="body" class="tab-button py-3 px-4 md:px-6 text-sm md:text-base border-b-2 border-transparent hover:text-[#c29a6b] transition-colors duration-300">3. Body Paragraphs</button>
+            <button data-target="language" class="tab-button py-3 px-4 md:px-6 text-sm md:text-base border-b-2 border-transparent hover:text-[#c29a6b] transition-colors duration-300">4. Language</button>
+        </nav>
+
+        <main id="content-container">
+            <section id="introduction" class="content-section active">
+                <div class="bg-white p-6 md:p-8 rounded-lg shadow-md border border-slate-100">
+                    <h2 class="text-2xl font-bold mb-4 text-[#c29a6b]">The Introduction</h2>
+                    <p class="text-slate-600 mb-6">Your first paragraph has one simple job: to introduce the process diagram to the reader. You should paraphrase the information given in the prompt, using your own words to state what the diagram shows. Aim for one or two clear sentences.</p>
+                    <div class="bg-stone-50 p-4 rounded-md border-l-4 border-[#c29a6b]">
+                        <h4 class="font-semibold mb-2 text-slate-700">Purpose:</h4>
+                        <p class="text-sm text-slate-600 mb-4">To introduce the diagram and the process it illustrates.</p>
+                        <h4 class="font-semibold mb-2 text-slate-700">Key Action:</h4>
+                        <p class="text-sm text-slate-600 mb-4">Paraphrase the topic sentence from the question.</p>
+                        <h4 class="font-semibold mb-2 text-slate-700">Examples:</h4>
+                        <blockquote class="text-sm text-slate-700 italic space-y-2">
+                            <p>"The diagram illustrates the various stages involved in the production of X."</p>
+                            <p>"The provided flowchart clearly depicts how X is manufactured through a series of steps."</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+
+            <section id="overview" class="content-section">
+                <div class="bg-white p-6 md:p-8 rounded-lg shadow-md border border-slate-100">
+                    <h2 class="text-2xl font-bold mb-4 text-[#c29a6b]">The Overview</h2>
+                    <p class="text-slate-600 mb-6">The overview provides the "big picture" of the process without going into detail. It should be a short paragraph of about two sentences that highlights the most important features, such as the total number of steps and whether the process is linear (has a start and an end) or cyclical (repeats in a loop).</p>
+                     <div class="bg-stone-50 p-4 rounded-md border-l-4 border-[#c29a6b]">
+                        <h4 class="font-semibold mb-2 text-slate-700">Purpose:</h4>
+                        <p class="text-sm text-slate-600 mb-4">To present the most prominent features without specific details.</p>
+                        <h4 class="font-semibold mb-2 text-slate-700">Key Information:</h4>
+                        <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
+                            <li>State the total number of steps or stages.</li>
+                            <li>Identify if the process is linear or cyclical.</li>
+                            <li>(Optional) Mention main groupings of activities.</li>
+                        </ul>
+                         <h4 class="font-semibold mt-4 mb-2 text-slate-700">Examples:</h4>
+                        <blockquote class="text-sm text-slate-700 italic space-y-2">
+                            <p><strong>Linear:</strong> "Overall, the process comprises eight stages, beginning with the collection of raw materials and concluding with the final packaged product."</p>
+                            <p><strong>Cyclical:</strong> "In general, the five-step cycle starts when glass bottles are collected and finishes when new products are ready for sale, restarting the process."</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+
+            <section id="body" class="content-section">
+                 <div class="bg-white p-6 md:p-8 rounded-lg shadow-md border border-slate-100">
+                    <h2 class="text-2xl font-bold mb-4 text-[#c29a6b]">The Body Paragraphs</h2>
+                    <p class="text-slate-600 mb-6">This is where you describe each step of the process in detail. Logically divide the process into two parts and dedicate one paragraph to each part. Use sequencing words to guide the reader through the stages clearly and use the passive voice to keep the focus on the process itself.</p>
+                    <div class="grid md:grid-cols-2 gap-6 mt-6">
+                        <div class="bg-stone-50 p-4 rounded-md border-l-4 border-[#c29a6b]">
+                            <h3 class="font-semibold mb-2 text-slate-800">Body Paragraph 1</h3>
+                            <p class="text-sm text-slate-600 mb-3">Describe the first half of the process, from the starting point to a logical midway point.</p>
+                            <h4 class="font-semibold text-sm mb-1 text-slate-700">Key Focus:</h4>
+                            <p class="text-sm text-slate-600 mb-3">Detail the raw materials and the first 2-4 steps.</p>
+                            <h4 class="font-semibold text-sm mb-1 text-slate-700">Example Language:</h4>
+                            <p class="text-sm text-slate-700 italic">"The process begins when... / First of all, the ingredients are mixed... Following this, the mixture is..."</p>
+                        </div>
+                        <div class="bg-stone-50 p-4 rounded-md border-l-4 border-[#c29a6b]">
+                            <h3 class="font-semibold mb-2 text-slate-800">Body Paragraph 2</h3>
+                            <p class="text-sm text-slate-600 mb-3">Describe the second half of the process, continuing from where you left off and proceeding to the final outcome.</p>
+                            <h4 class="font-semibold text-sm mb-1 text-slate-700">Key Focus:</h4>
+                            <p class="text-sm text-slate-600 mb-3">Detail the final processing and the end product or the start of the loop.</p>
+                             <h4 class="font-semibold text-sm mb-1 text-slate-700">Example Language:</h4>
+                             <p class="text-sm text-slate-700 italic">"Subsequently, the product is packaged... / Once this stage has been completed... Finally, the cycle repeats itself..."</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="language" class="content-section">
+                <div class="bg-white p-6 md:p-8 rounded-lg shadow-md border border-slate-100">
+                    <h2 class="text-2xl font-bold mb-4 text-[#c29a6b]">Essential Language Checklist</h2>
+                    <p class="text-slate-600 mb-6">Using the right vocabulary and grammar is crucial for a high score. The passive voice is often used to emphasize the action, and sequencing words are essential for clarity. Click each category below to see examples.</p>
+                    <div id="accordion-container" class="space-y-3">
+                        <div class="accordion-item border rounded-lg overflow-hidden">
+                            <button class="accordion-header w-full flex justify-between items-center p-4 bg-stone-50 hover:bg-stone-100">
+                                <span class="font-semibold text-slate-700">Sequence Connectors</span>
+                                <span class="accordion-icon text-2xl font-light text-[#c29a6b]">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="p-4 border-t">
+                                    <p class="text-sm text-slate-600 mb-2"><strong>Function:</strong> To link steps in a clear, logical order.</p>
+                                    <p class="text-sm text-slate-700 font-mono bg-stone-100 p-2 rounded-md">First, Next, Then, Following this, Subsequently, After which, Finally, The next phase</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border rounded-lg overflow-hidden">
+                             <button class="accordion-header w-full flex justify-between items-center p-4 bg-stone-50 hover:bg-stone-100">
+                                <span class="font-semibold text-slate-700">Time Clauses</span>
+                                <span class="accordion-icon text-2xl font-light text-[#c29a6b]">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="p-4 border-t">
+                                    <p class="text-sm text-slate-600 mb-2"><strong>Function:</strong> To show when an action starts or finishes relative to another.</p>
+                                     <p class="text-sm text-slate-700 font-mono bg-stone-100 p-2 rounded-md">Once the raw materials are collected, Before the product is packaged, When the substance is heated</p>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="accordion-item border rounded-lg overflow-hidden">
+                            <button class="accordion-header w-full flex justify-between items-center p-4 bg-stone-50 hover:bg-stone-100">
+                                <span class="font-semibold text-slate-700">Active/Passive Voice</span>
+                                <span class="accordion-icon text-2xl font-light text-[#c29a6b]">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="p-4 border-t">
+                                    <p class="text-sm text-slate-600 mb-2"><strong>Function:</strong> To emphasize the action/product (Passive is critical and most common).</p>
+                                     <p class="text-sm text-slate-700 font-mono bg-stone-100 p-2 rounded-md">The material <strong>is transported</strong> to... / It <strong>is heated</strong> to... / The factory <strong>packages</strong> the final product.</p>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="accordion-item border rounded-lg overflow-hidden">
+                            <button class="accordion-header w-full flex justify-between items-center p-4 bg-stone-50 hover:bg-stone-100">
+                                <span class="font-semibold text-slate-700">Process Verbs</span>
+                                <span class="accordion-icon text-2xl font-light text-[#c29a6b]">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="p-4 border-t">
+                                    <p class="text-sm text-slate-600 mb-2"><strong>Function:</strong> To use specific verbs to describe actions accurately.</p>
+                                    <p class="text-sm text-slate-700 font-mono bg-stone-100 p-2 rounded-md">Filter, Sort, Transport, Collect, Process, Manufacture, Package, Harvest, Grind, Refine</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.tab-button');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const target = tab.dataset.target;
+
+                    tabs.forEach(t => t.classList.remove('tab-active'));
+                    tab.classList.add('tab-active');
+
+                    contentSections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === target) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            const accordionItems = document.querySelectorAll('.accordion-item');
+
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                header.addEventListener('click', () => {
+                    const isOpen = item.classList.contains('open');
+                    
+                    accordionItems.forEach(i => i.classList.remove('open'));
+                    
+                    if (!isOpen) {
+                        item.classList.add('open');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
